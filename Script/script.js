@@ -96,3 +96,15 @@ function renderIssues(data) {
     `;
   });
 }
+// SEARCH
+
+searchBtn.onclick = async () => {
+  const q = searchInput.value;
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${q}`,
+  );
+  const data = await res.json();
+
+  renderIssues(data.data);
+};
