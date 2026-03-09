@@ -108,3 +108,64 @@ searchBtn.onclick = async () => {
 
   renderIssues(data.data);
 };
+// MODAL OPEN
+
+function openModal(id) {
+  const issue = issues.find((i) => i.id === id);
+
+  currentIssue = issue;
+
+  modalTitle.innerText = issue.title;
+  modalDesc.innerText = issue.description;
+  modalAuthor.innerText = issue.author;
+  modalAssignee.innerText = issue.assignee || "Unassigned";
+
+  modalDate.innerText = new Date(issue.createdAt).toLocaleDateString();
+
+  modalStatus.innerText = issue.status === "open" ? "Opened" : "Closed";
+
+  modalStatus.className =
+    issue.status === "open"
+      ? "px-3 py-1 rounded-full text-white bg-green-500"
+      : "px-3 py-1 rounded-full text-white bg-purple-500";
+
+  modalLabels.innerHTML = "";
+
+  issue.labels.forEach((label) => {
+    let classes =
+      "px-3 py-1 rounded-full text-sm flex items-center gap-1 uppercase";
+    let icon = "";
+
+    if (label.toLowerCase() === "bug") {
+      classes += " bg-red-100 text-red-600";
+      icon = `<i class="fa-solid fa-bug"></i>`;
+    } else if (label.toLowerCase() === "enhancement") {
+      classes += " bg-green-100 text-green-600";
+      icon = `<i class="fa-solid fa-wand-magic-sparkles"></i>`;
+    } else {
+      classes += " bg-yellow-100 text-yellow-600";
+      icon = `<i class="fa-solid fa-life-ring"></i>`;
+    }
+
+    modalLabels.innerHTML += `
+    <span class="${classes}">
+      ${icon} ${label}
+    </span>
+  `;
+  });
+
+  modalPriority.innerText = issue.priority.toUpperCase();
+
+  modalPriority.className =
+    issue.priority === "high"
+      ? "px-3 py-1 bg-red-500 rounded-full text-white text-sm"
+      : issue.priority === "medium"
+        ? "px-3 py-1 bg-yellow-500 rounded-full text-white text-sm"
+        : "px-3 py-1 bg-gray-500 rounded-full text-white text-sm";
+
+  //   toggleStatusBtn.innerText =
+  //     issue.status === "open" ? "Close Issue" : "Reopen Issue";
+
+  issueModal.classList.remove("hidden");
+  issueModal.classList.add("flex");
+}

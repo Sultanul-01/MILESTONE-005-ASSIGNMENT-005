@@ -167,6 +167,67 @@
         ></div>
       </div>
     </div>
+     <!-- ================= MODAL ================= -->
+
+    <div
+      id="issueModal"
+      class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white w-[650px] rounded-xl p-8 shadow-xl">
+        <h2 id="modalTitle" class="text-3xl font-bold mb-4"></h2>
+        <div class="flex items-center gap-3 text-gray-600 mb-4">
+          <span
+            id="modalStatus"
+            class="px-3 py-1 text-sm rounded-full text-white bg-green-500"
+          >
+            Opened
+          </span>
+
+          <span>•</span>
+
+          <span>Opened by <b id="modalAuthor"></b></span>
+
+          <span>•</span>
+
+          <span id="modalDate"></span>
+        </div>
+
+        <div id="modalLabels" class="flex gap-2 mb-6"></div>
+
+        <p id="modalDesc" class="text-gray-600 mb-6"></p>
+
+        <div class="bg-gray-100 p-5 rounded-lg flex justify-between mb-6">
+          <div>
+            <p class="text-gray-500">Assignee:</p>
+            <p id="modalAssignee" class="font-semibold"></p>
+          </div>
+
+          <div>
+            <p class="text-gray-500">Priority:</p>
+            <span
+              id="modalPriority"
+              class="px-3 py-1 rounded-full text-white text-sm"
+            ></span>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3">
+          <!-- <button
+            id="toggleStatusBtn"
+            class="bg-green-600 text-white px-4 py-2 rounded"
+          >
+            Close Issue
+          </button> -->
+
+          <button
+            onclick="closeModal()"
+            class="bg-[#4A00FF] text-white px-5 py-2 rounded"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="/Script/script.js"></script>
   </body>
 </html>
