@@ -96,6 +96,40 @@ function renderIssues(data) {
     `;
   });
 }
+
+// TABS
+
+document.querySelectorAll(".tabBtn").forEach((btn) => {
+  btn.onclick = () => {
+    // Reset all buttons to gray
+    document.querySelectorAll(".tabBtn").forEach((b) => {
+      b.classList.remove("bg-[#4A00FF]", "text-white");
+      b.classList.add("bg-gray-200");
+    });
+
+    // Make clicked button blue
+    btn.classList.remove("bg-gray-200");
+    btn.classList.add("bg-[#4A00FF]", "text-white");
+
+    // Filter issues based on data-tab
+    const tab = btn.dataset.tab;
+    let filteredIssues = [];
+
+    if (tab === "all") {
+      filteredIssues = issues;
+    } else if (tab === "open") {
+      filteredIssues = issues.filter((i) => i.status === "open");
+    } else if (tab === "closed") {
+      filteredIssues = issues.filter((i) => i.status === "closed");
+    }
+
+    renderIssues(filteredIssues);
+
+    // Update count dynamically
+    issueCount.innerText = filteredIssues.length;
+  };
+});
+
 // SEARCH
 
 searchBtn.onclick = async () => {
@@ -108,6 +142,7 @@ searchBtn.onclick = async () => {
 
   renderIssues(data.data);
 };
+
 // MODAL OPEN
 
 function openModal(id) {
@@ -169,6 +204,7 @@ function openModal(id) {
   issueModal.classList.remove("hidden");
   issueModal.classList.add("flex");
 }
+
 // CLOSE MODAL
 
 function closeModal() {
