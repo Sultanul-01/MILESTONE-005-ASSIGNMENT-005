@@ -169,3 +169,20 @@ function openModal(id) {
   issueModal.classList.remove("hidden");
   issueModal.classList.add("flex");
 }
+// CLOSE MODAL
+
+function closeModal() {
+  issueModal.classList.add("hidden");
+}
+
+// TOGGLE ISSUE STATUS
+
+toggleStatusBtn.onclick = () => {
+  if (!currentIssue) return;
+
+  currentIssue.status = currentIssue.status === "open" ? "closed" : "open";
+
+  renderIssues(issues);
+
+  openModal(currentIssue.id);
+};
