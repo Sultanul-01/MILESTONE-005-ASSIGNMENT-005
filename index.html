@@ -68,6 +68,38 @@
         </form>
       </div>
     </div>
+    <!-- ================= DASHBOARD ================= -->
+
+    <div id="dashboard" class="hidden">
+      <!-- NAVBAR -->
+
+      <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+          <div class="flex gap-1.5 items-center">
+            <img class="w-10" src="/assets/github-logo.png" alt="" />
+            <h1 class="hidden sm:block font-bold sm:text-lg">
+              GitHub Issues Tracker
+            </h1>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass hidden sm:inline"></i>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search issues..."
+              class="border px-3 py-2 rounded-lg"
+            />
+
+            <button
+              id="searchBtn"
+              class="bg-[#4A00FF] text-white px-4 py-2 rounded-lg"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
     <script src="/Script/script.js"></script>
   </body>
 </html>
